@@ -215,8 +215,8 @@ body <- dashboardBody(
               tabBox(
                 title = span(icon("chart-area"), "% de Camas Disponibles"),
                 id = "tabset5",
-                tabPanel("Camas Nivel III",
-                         dygraphOutput("dygraph_world_test_camas") %>% withSpinner(color = "#5bc0de")
+                tabPanel("Camas UCI",
+                         dygraphOutput("dygraph_region_camas") %>% withSpinner(color = "#5bc0de")
                          )
               )
             )

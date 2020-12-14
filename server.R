@@ -574,9 +574,9 @@ function(input, output, session) {
   })
 
   # Show beds data ----
-  output$dygraph_world_test_camas <- renderDygraph({
+  output$dygraph_region_camas <- renderDygraph({
     
-    dygraph(data_beds()[, .(DateRep, porcentajeNIVELIII)],
+    dygraph(data_beds()[, .(DateRep, UCI, NOUCI, NIVELII)],
             main = "Region Cusco") %>%
       dyRangeSelector(dateWindow = c(data_beds()[, max(DateRep) - 80], data_beds()[, max(DateRep) + 1]),
                       fillColor = "#5bc0de", strokeColor = "#222d32") %>%
