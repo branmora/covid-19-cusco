@@ -66,6 +66,20 @@ read_data_beds <- function() {
   
 }
 
+
+read_data_cusco <- function() {
+  
+  # data_confirmed <- fread("02_data/time_series_19-covid-Confirmed.csv")
+  data_cusco_melt <- fread("https://raw.githubusercontent.com/branmora/covid-19-cusco/master/data/data_cusco.csv", sep2 = ";")
+  
+  data_cusco_melt[, fecha_resultado := lubridate::mdy(fecha_resultado)]
+  
+  
+  return(data_cusco_melt)
+  
+}
+
+
 # read recovered data from: https://github.com/ulklc/covid19-timeseries - since 19.6.2020 not updated
 # read recovered data from: https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv
 read_data_recovered <- function() {

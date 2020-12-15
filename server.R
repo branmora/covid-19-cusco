@@ -125,6 +125,13 @@ function(input, output, session) {
     data_camas <- read_data_beds()
   })
   
+  
+  #read beds data
+  
+  data_cuscot <- reactive({
+    data_cusco <- read_data_cusco()
+  })
+  
     
   # read traffic light data
   data_traffic <- reactive({
@@ -434,7 +441,7 @@ function(input, output, session) {
   output$valuebox_total_cases_world <- renderValueBox({
     
     valueBox(
-      format("15.56%", nsmall=1, big.mark=","),
+      format("15.19%", nsmall=1, big.mark=","),
       "Tasa de positividad",
       icon = icon("ambulance"),
       color = "orange"
@@ -445,7 +452,7 @@ function(input, output, session) {
   output$valuebox_total_deaths_world <- renderValueBox({
     
     valueBox(
-      format("1.75%", nsmall=1, big.mark=","),
+      format("1.72%", nsmall=1, big.mark=","),
       "Tasa de letalidad",
       icon = icon("skull"),
       color = "red"
@@ -456,7 +463,7 @@ function(input, output, session) {
   output$valuebox_total_recov_world <- renderValueBox({
     
     valueBox(
-      format("75%", nsmall=1, big.mark=","),
+      format("74%", nsmall=1, big.mark=","),
       "Porcentaje de camas disponibles en nivel III de atencion",
       icon = icon("star-of-life"),
       color = "green"
@@ -467,14 +474,13 @@ function(input, output, session) {
   output$valuebox_total_active_world <- renderValueBox({
     
     valueBox(
-      format("66,118", nsmall=1, big.mark=","),
+      format("69,293", nsmall=1, big.mark=","),
       "Pruebas rapidas realizadas",
       icon = icon("hospital-alt"),
       color = "yellow"
       )
     
   })
-  
   
   # informative text for cases -world -----
   output$cases_text_world <- renderUI({
@@ -506,10 +512,10 @@ function(input, output, session) {
   
   output$dygraph_world_new_cases <- renderDygraph({
     
-    dygraph(data_region()[, .(DateRep, Cases)],
+    dygraph(data_cuscot()[, .(fecha_resultado, positivos)],
             main = "Region Cusco") %>%
       # dyAxis("y", label = "Cases") %>%
-      dyRangeSelector(dateWindow = c(data_region()[, max(DateRep) - 80], data_country()[, max(DateRep) + 1]),
+      dyRangeSelector(dateWindow = c(data_cuscot()[, max(fecha_resultado) - 80], data_cuscot()[, max(fecha_resultado) + 1]),
                       fillColor = "#5bc0de", strokeColor = "#222d32") %>%
       dyOptions(useDataTimezone = TRUE, strokeWidth = 2,
                 fillGraph = FALSE, fillAlpha = 0.4,
@@ -554,10 +560,10 @@ function(input, output, session) {
   
   output$dygraph_world_new_deaths <- renderDygraph({
     
-    dygraph(data_region()[, .(DateRep, Deaths)],
+    dygraph(data_cuscot()[, .(fecha_resultado, defunciones)],
             main = "Region Cusco") %>%
       # dyAxis("y", label = "Deaths") %>%
-      dyRangeSelector(dateWindow = c(data_region()[, max(DateRep) - 80], data_country()[, max(DateRep) + 1]),
+      dyRangeSelector(dateWindow = c(data_cuscot()[, max(fecha_resultado) - 80], data_cuscot()[, max(fecha_resultado) + 1]),
                       fillColor = "#5bc0de", strokeColor = "#222d32") %>%
       dyOptions(useDataTimezone = TRUE, strokeWidth = 2,
                 fillGraph = FALSE, fillAlpha = 0.4,
