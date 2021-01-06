@@ -85,7 +85,6 @@ function(input, output, session) {
              )
 
   })
-
   
   # informative text for this app -----
   output$texto_semaforo <- renderUI({
@@ -117,7 +116,6 @@ function(input, output, session) {
     data_res
     
   })
-
   
   #read beds data
   
@@ -126,7 +124,7 @@ function(input, output, session) {
   })
   
   
-  #read beds data
+  #read data 2
   
   data_cuscot <- reactive({
     data_cusco <- read_data_cusco()
