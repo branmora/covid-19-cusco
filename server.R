@@ -588,7 +588,7 @@ function(input, output, session) {
                 fillGraph = FALSE, fillAlpha = 0.4,
                 drawPoints = TRUE, pointSize = 1,
                 pointShape = "circle",
-                colors = c("#5bc0de")) %>%
+                colors = c("#5bc0de", "#2069e0", "#192734")) %>%
       dyHighlight(highlightSeriesOpts = list(strokeWidth = 2.5, pointSize = 4)) %>%
       dyLegend(width = 300, show = "auto", hideOnMouseOut = TRUE, labelsSeparateLines = TRUE) %>%
       dyShading(from = "0", to = "0.25", color = "#CCEBD6", axis = "y") %>%

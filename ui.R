@@ -213,7 +213,7 @@ body <- dashboardBody(
             ),
             fluidRow(
               tabBox(
-                title = span(icon("chart-area"), "% de Camas Disponibles"),
+                title = span(icon("chart-area"), "% de Camas Ocupadas"),
                 id = "tabset5",
                 tabPanel("Camas UCI",
                          dygraphOutput("dygraph_region_camas") %>% withSpinner(color = "#5bc0de")
