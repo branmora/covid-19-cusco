@@ -14,7 +14,7 @@ function(input, output, session) {
   # forecasting
   source("01_scripts/forecasting.R")
   
-  # Read process data
+  # Read process data -----
   
   data1 <- fread("https://raw.githubusercontent.com/branmora/covid-19-cusco/master/1.%20ACTAS.csv", sep2 = ";", header = TRUE)
   data_bar <- fread("https://raw.githubusercontent.com/branmora/covid-19-cusco/master/data/bar_chart.csv", sep2 = ",", header = TRUE)
@@ -104,7 +104,6 @@ function(input, output, session) {
   # read the data ----
   data_corona <- reactive({
     
-  
     data_res <- join_all_corona_data()
     
     data_pop <- read_populations()
@@ -138,8 +137,6 @@ function(input, output, session) {
     
   })
   
-  
-  
   # date of update -----
   output$text_date_update <- renderUI({
     
@@ -148,7 +145,6 @@ function(input, output, session) {
               )
     
   })
-
     
   # Country selector -----
   output$selector_country <- renderUI({
@@ -224,7 +220,7 @@ function(input, output, session) {
                   ))
   })
   
-  # Subset data by a country ----
+  # Subset data by country ----
   data_country <- reactive({
     
     shiny::req(input$country)
@@ -235,7 +231,7 @@ function(input, output, session) {
     
   })
 
-  # Subset traffic by a country ----
+  # Subset traffic by country ----
   data_select_traffic <- reactive({
     
     shiny::req(input$country)
@@ -422,8 +418,7 @@ function(input, output, session) {
       dyLegend(width = 300, show = "auto", hideOnMouseOut = TRUE, labelsSeparateLines = TRUE)
     
   })
-  
-  
+
   #### Region aggregated -----------
   
   data_region <- reactive({
@@ -479,6 +474,8 @@ function(input, output, session) {
       )
     
   })
+  
+  
   
   # informative text for cases -world -----
   output$cases_text_world <- renderUI({

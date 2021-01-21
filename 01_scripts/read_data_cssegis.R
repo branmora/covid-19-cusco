@@ -2,7 +2,7 @@
 
 source("01_scripts/read_data_covid19datahub.R")
 
-read_data_cases <- function() {
+read_data_corona <- function() {
   
   data_confirmed_melt <- fread("https://raw.githubusercontent.com/branmora/covid-19-cusco/master/data/cases.csv", sep2 = ";")
   
@@ -27,6 +27,7 @@ read_data_cases <- function() {
   return(data_confirmed_melt_agg)
   
 }
+
 
 read_data_deaths <- function() {
   
